@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 400px;
+            background-color: #000000;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .profile {
+            height: 100px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile img {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .name {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .role {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .earnings {
+            height: 100px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .amount {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .label {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .nav {
+            background-color: #000000;
+            margin-left: 20px;
+            width: 250px;
+        }
+        
+        .tab {
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            text-align: left;
+            background-color: #000000;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tab:hover {
+            background-color: #444;
+        }
+        
+        .arrow {
+            font-size: 12px;
+        }
+        
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .box {
+            background-color: #000000;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        
+        .box h2 {
+            margin-top: 0;
+        }
+        
+        button {
+            background-color: #00b300;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #009900;
+        }
+        
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .two-column>div {
+            width: 48%;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                flex-direction: column;
+            }
+            .two-column>div {
+                width: 100%;
+            }
+        }
+        
+        .sub-menu {
+            display: none;
+            padding-left: 20px;
+        }
+        
+        .sub-tab {
+            padding: 10px;
+            cursor: pointer;
+            text-align: left;
+            background-color: #000000;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        
+        .sub-tab:hover {
+            background-color: #000000;
+        }
+        
+        #dashboard {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        
+        .dashboard-content {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <!-- <img src="profile.png" alt="Profile Image"> -->
+                <span id="userName"></span>
+                <div class="role">MADverse Vibe</div>
+            </div>
+            <div class="earnings">
+                <div class="label">Earnings</div>
+                <div class="amount">₹0.00</div>
+            </div>
+            <div class="nav">
+                <div class="tab" onclick="showTab('dashboard')">Dashboard</div>
+                <div class="tab" onclick="showTab('analytics')">Analytics</div>
+
+                <div class="tab" onclick="toggleSubMenu('releases')">
+                    Releases <span class="arrow" id="releases-arrow">▶</span>
+                </div>
+                <div id="releases-sub" class="sub-menu">
+                    <div class="sub-tab" onclick="showTab('create-new-release')">Create New Release</div>
+                    <div class="sub-tab" onclick="showTab('my-releases')">My Releases</div>
+                </div>
+
+                <div class="tab" onclick="toggleSubMenu('finance')">
+                    Finance <span class="arrow" id="finance-arrow">▶</span>
+                </div>
+                <div id="finance-sub" class="sub-menu">
+                    <div class="sub-tab" onclick="showTab('transactions')">Transactions</div>
+                    <div class="sub-tab" onclick="showTab('royalty-splits')">Royalty Splits</div>
+                    <div class="sub-tab" onclick="showTab('statements')">Statements</div>
+                </div>
+
+                <div class="tab" onclick="toggleSubMenu('promotion')">
+                    Promotion <span class="arrow" id="promotion-arrow">▶</span>
+                </div>
+                <div id="promotion-sub" class="sub-menu">
+                    <div class="sub-tab" onclick="showTab('create-promotion')">Create Promotion</div>
+                    <div class="sub-tab" onclick="showTab('manage-promotion')">Manage Promotion</div>
+                </div>
+
+                <div class="tab" onclick="toggleSubMenu('fanlinks')">
+                    Fanlinks <span class="arrow" id="fanlinks-arrow">▶</span>
+                </div>
+                <div id="fanlinks-sub" class="sub-menu">
+                    <div class="sub-tab" onclick="showTab('create-fanlink')">Create Fanlink</div>
+                    <div class="sub-tab" onclick="showTab('manage-fanlink')">Manage Fanlink</div>
+                </div>
+                <div class="tab" onclick="showTab('sync')">Sync</div>
+                <div class="tab" onclick="showTab('cover')">Cover-Art-Studio</div>
+
+
+            </div>
+        </div>
+        <div class="main">
+            <div id="dashboard" class="tab-content active">
+
+                <h1 style="font-size: 30px;">Dashboard</h1>
+                <div class="box two-column">
+                    <div style="background-image: linear-gradient(to right, red , yellow);" class="dashboard-content">
+                        <h2>Firsts are always special</h2>
+                        <p>When you've got the beats right, there's no fun in keeping the world waiting.</p>
+                        <button>Release Music</button>
+                        <button>Watch Demo</button>
+                    </div>
+                    <div class="dashboard-content">
+                        <h2>The future of cover art is here!</h2>
+                        <p>Tired of struggling to convey your vision to artists? Say goodbye to the endless search for the right creative match.</p>
+                        <button>Try it out</button>
+                    </div>
+                </div>
+                <div class="box two-column">
+                    <div class="dashboard-content">
+                        <h2>Earnings</h2>
+                        <p>This is your available cash-out amount. Check out the Royalty Statements Tab for comprehensive statements.</p>
+                        <button>Royalty Statements</button>
+                    </div>
+
+                    <div class="dashboard-content">
+                        <h2>So many links!</h2>
+                        <p>Level up your marketing with unlimited smart links and landing pages. Release smart links, pre-save links, bio links, tour links, content links, etc.</p>
+                    </div>
+                </div>
+                <div class="box two-column">
+                    <div class="dashboard-content">
+                        <h2>Earnings</h2>
+                        <p>This is your available cash-out amount. Check out the Royalty Statements Tab for comprehensive statements.</p>
+                        <button>Royalty Statements</button>
+                    </div>
+
+                    <div class="dashboard-content">
+                        <h2>So many links!</h2>
+                        <p>Level up your marketing with unlimited smart links and landing pages. Release smart links, pre-save links, bio links, tour links, content links, etc.</p>
+                    </div>
+                </div>
+                <div class="box two-column">
+                    <div class="dashboard-content">
+                        <h2>Earnings</h2>
+                        <p>This is your available cash-out amount. Check out the Royalty Statements Tab for comprehensive statements.</p>
+                        <button>Royalty Statements</button>
+                    </div>
+
+                    <div class="dashboard-content">
+                        <h2>So many links!</h2>
+                        <p>Level up your marketing with unlimited smart links and landing pages. Release smart links, pre-save links, bio links, tour links, content links, etc.</p>
+                    </div>
+                </div>
+                <div class="box two-column">
+                    <div class="dashboard-content">
+                        <h2>Earnings</h2>
+                        <p>This is your available cash-out amount. Check out the Royalty Statements Tab for comprehensive statements.</p>
+                        <button>Royalty Statements</button>
+                    </div>
+
+                    <div class="dashboard-content">
+                        <h2>So many links!</h2>
+                        <p>Level up your marketing with unlimited smart links and landing pages. Release smart links, pre-save links, bio links, tour links, content links, etc.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="analytics" class="tab-content">
+                <h2>Analytics</h2>
+                <!-- Add analytics content here -->
+            </div>
+            <div id="create-new-release" class="tab-content" style="display: none;">
+                <h2>Create New Release</h2>
+                <!-- Add create new release content here -->
+            </div>
+            <div id="my-releases" class="tab-content" style="display: none;">
+                <h2>My Releases</h2>
+                <!-- Add my releases content here -->
+            </div>
+            <div id="transactions" class="tab-content" style="display: none;">
+                <h2>Transactions</h2>
+                <!-- Add transactions content here -->
+            </div>
+            <div id="royalty-splits" class="tab-content" style="display: none;">
+                <h2>Royalty Splits</h2>
+                <!-- Add royalty splits content here -->
+            </div>
+            <div id="statements" class="tab-content" style="display: none;">
+                <h2>Statements</h2>
+                <!-- Add statements content here -->
+            </div>
+            <div id="create-promotion" class="tab-content" style="display: none;">
+                <h2>Create Promotion</h2>
+                <!-- Add create promotion content here -->
+            </div>
+            <div id="manage-promotion" class="tab-content" style="display: none;">
+                <h2>Manage Promotion</h2>
+                <!-- Add manage promotion content here -->
+            </div>
+            <div id="create-fanlink" class="tab-content" style="display: none;">
+                <h2>Create Fanlink</h2>
+                <!-- Add create fanlink content here -->
+            </div>
+            <div id="manage-fanlink" class="tab-content" style="display: none;">
+                <h2>Manage Fanlink</h2>
+                <!-- Add manage fanlink content here -->
+            </div>
+            <div id="sync" class="tab-content" style="display: none;">
+                <h2>Sync</h2>
+                <!-- Add manage fanlink content here -->
+            </div>
+            <div id="cover" class="tab-content" style="display: none;">
+                <h2>cover-art-studio</h2>
+                <!-- Add manage fanlink content here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.style.display = 'none');
+
+            const activeTab = document.getElementById(tabName);
+            if (activeTab) {
+                activeTab.style.display = 'block';
+            }
+        }
+
+        function toggleSubMenu(menuName) {
+            const subMenu = document.getElementById(`${menuName}-sub`);
+            const arrow = document.getElementById(`${menuName}-arrow`);
+            if (subMenu.style.display === 'none' || subMenu.style.display === '') {
+                subMenu.style.display = 'block';
+                arrow.textContent = '▼';
+            } else {
+                subMenu.style.display = 'none';
+                arrow.textContent = '▶';
+            }
+        }
+
+
+        // Extracting user's name from the query parameter
+        const params = new URLSearchParams(window.location.search);
+
+
+        const userName = params.get('name');
+        if (userName) {
+            document.getElementById('userName').textContent = userName;
+        }
+
+        // Displaying user's name on the dashboard
+        document.getElementById('userName').textContent = userName;
+
+
+        // Show default tab
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('dashboard');
+        });
+    </script>
+</body>
+
+</html>

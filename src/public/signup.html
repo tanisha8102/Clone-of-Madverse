@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+        }
+        
+        .login-side {
+            width: 60%;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        
+        .login-side p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 35px;
+            margin-right: 105px;
+            font-weight: bolder;
+        }
+        
+        .login-side label {
+            font-size: 15px;
+            margin-right: 150px;
+            color: rgb(128, 127, 127);
+            margin-bottom: 20px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        form input {
+            background-color: rgb(24, 24, 24);
+            color: rgb(157, 155, 155);
+            margin-top: 20px;
+            width: 478px;
+            height: 46px;
+            border-radius: 6px;
+            border: 1px solid rgb(52, 52, 52);
+            vertical-align: middle;
+            text-align: center;
+            font-size: 15px;
+        }
+        
+        form button {
+            background-color: rgb(149, 255, 0);
+            margin-top: 40px;
+            width: 100px;
+            height: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        form button:hover {
+            border: 2px solid rgb(149, 255, 0);
+            background-color: black;
+            color: rgb(149, 255, 0);
+        }
+        
+        .nav-bar {
+            margin-left: 160px;
+            margin-top: 60px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            font-size: 1.5 rem;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .nav-bar img {
+            margin-left: 50px;
+            margin-top: 10px;
+            width: 70px;
+            height: 40px;
+            margin-right: 5px;
+        }
+        
+        .img-side {
+            width: 40%;
+            background-image: url('images/login-img.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .logo-img {
+            height: 100px;
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-side">
+            <div class="nav-bar">
+                <img src="images/logo.png" alt="">
+                <h2>Future Lab Studio</h2>
+            </div>
+            <p>If you've got the beats,<br> we've got the tech.</p>
+
+            <label style="margin-right: 300px;" for="">Please Sign Up to proceed</label>
+            <form action="/signup" method="post">
+                <input type="text" id="name" name="name" placeholder="Name" required autocomplete="off">
+                <input type="email" id="email" name="email" placeholder="Email" required autocomplete="off">
+                <input type="password" id="Password" name="password" placeholder="Password" required>
+                <button type="submit" class="submit-btn">SIGN UP</button>
+                <label style="margin-right: 270px; margin-top: 20px;">Already have an account? <a class="link" href="/login">Login</a></label>
+            </form>
+
+            <label for="" style="margin-left:91px ; margin-top: 80px; font-size: 15px">By signing up, you agree to our <a href="">Terms of service</a> and <a href="">Privacy Policy</a> </label>
+            <marquee behavior="scroll" direction="left">
+                <img class="logo-img" src="images/image-3.png" alt="">
+            </marquee>
+        </div>
+
+        <div class="img-side"></div>
+    </div>
+</body>
+
+</html>

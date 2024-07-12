@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madverse Blog</title>
+    <style>
+        /* Basic styling for tabs and content */
+        
+        .tabs {
+            display: flex;
+            cursor: pointer;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background-color: #f0f0f0;
+        }
+        
+        .content {
+            display: none;
+            padding: 20px;
+            margin-top: -1px;
+        }
+        
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabs">
+        <div class="tab" data-content="all">All</div>
+        <div class="tab" data-content="articles">Articles</div>
+        <div class="tab" data-content="resources">Resources</div>
+        <div class="tab" data-content="news">News</div>
+    </div>
+    <div id="all" class="content">
+        <h2>Welcome to the Madverse Blog</h2>
+        <p>Explore the latest updates from all categories including articles, resources, and news.</p>
+    </div>
+    <div id="articles" class="content">
+        <h2>Articles</h2>
+        <p>Read our insightful articles on various topics that keep you informed and engaged.</p>
+    </div>
+    <div id="resources" class="content">
+        <h2>Resources</h2>
+        <p>Find valuable resources that can help you in your personal and professional journey.</p>
+    </div>
+    <div id="news" class="content">
+        <h2>News</h2>
+        <p>Stay updated with the latest news and announcements from our team.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+
+            function showContent(tab) {
+                // Remove active class from all tabs and content
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to the clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-content')).classList.add('active');
+
+                // Update the URL without reloading the page
+                const state = {
+                    tab: tab.getAttribute('data-content')
+                };
+                const title = document.title;
+                const url = `#${tab.getAttribute('data-content')}`;
+                history.pushState(state, title, url);
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    showContent(tab);
+                });
+            });
+
+            // Handle the browser back/forward buttons
+            window.addEventListener('popstate', function(event) {
+                if (event.state && event.state.tab) {
+                    const tab = document.querySelector(`.tab[data-content="${event.state.tab}"]`);
+                    if (tab) {
+                        showContent(tab);
+                    }
+                }
+            });
+
+            // Check the URL fragment on page load and show the corresponding tab
+            if (location.hash) {
+                const initialTab = document.querySelector(`.tab[data-content="${location.hash.substring(1)}"]`);
+                if (initialTab) {
+                    showContent(initialTab);
+                } else {
+                    tabs[0].click();
+                }
+            } else {
+                tabs[0].click();
+            }
+        });
+    </script>
+</body>
+
+</html>

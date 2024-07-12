@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #1c1c1c;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.name {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.role {
+    font-size: 14px;
+    color: #888;
+}
+
+.earnings {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.amount {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.label {
+    font-size: 14px;
+    color: #888;
+}
+
+.nav {
+    width: 230px;
+}
+
+.tab {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    text-align: left;
+    background-color: #333;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab:hover {
+    background-color: #444;
+}
+
+.arrow {
+    font-size: 12px;
+}
+
+.main {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.box {
+    background-color: #222;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.box h2 {
+    margin-top: 0;
+}
+
+button {
+    background-color: #00b300;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #009900;
+}
+
+.two-column {
+    display: flex;
+    justify-content: space-between;
+}
+
+.two-column>div {
+    width: 48%;
+}
+
+@media (max-width: 768px) {
+    .two-column {
+        flex-direction: column;
+    }
+    .two-column>div {
+        width: 100%;
+    }
+}
+
+.sub-menu {
+    display: none;
+    padding-left: 20px;
+}
+
+.sub-tab {
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    background-color: #333;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.sub-tab:hover {
+    background-color: #444;
+}

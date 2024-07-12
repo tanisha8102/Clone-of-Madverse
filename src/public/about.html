@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dTfge10MO5JqHh1+gI0/zGSCJgjO0uuPh7eQFnEuQZm9XqccNRQJIpF2sFQ+P2n9FiM0R8h/mK7bhkhkgu++g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+    <style>
+        /* Basic Reset */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: black;
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+        /* Header Styles */
+        
+        header {
+            margin-top: 50px;
+            border-radius: 5px;
+            border: 1px solid rgb(44, 44, 44);
+            box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.3);
+            background-color: #101010;
+            color: #fff;
+            padding: 1rem 0;
+            width: 1030px;
+            margin-left: 120px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav {
+            background-color: #101010;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            background-color: #101010;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            background-color: #101010;
+            width: 70px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            margin-left: 20px;
+            background-color: #101010;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            background-color: #101010;
+            margin-left: 1rem;
+            position: relative;
+            /* Ensure dropdowns are positioned correctly */
+        }
+        
+        .nav-links a {
+            background-color: #101010;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            /* Center align items within nav links */
+        }
+        
+        .nav-links a:hover {
+            color: rgb(191, 255, 0);
+        }
+        
+        .login {
+            text-decoration: none;
+            width: 101px;
+            height: 49px;
+            color: rgb(191, 255, 0);
+            border: 1px solid rgb(191, 255, 0);
+            border-radius: 5px;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 120px;
+            cursor: pointer;
+        }
+        
+        .login:hover {
+            background-color: white;
+            color: black;
+            font-weight: bolder;
+        }
+        
+        .sign-up {
+            text-decoration: none;
+            background-color: rgb(191, 255, 0);
+            width: 101px;
+            height: 49px;
+            color: black;
+            border: 1px solid rgb(191, 255, 0);
+            border-radius: 5px;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .sign-up:hover {
+            border: 1px solid rgb(191, 255, 0);
+            background-color: black;
+            color: rgb(191, 255, 0);
+        }
+        
+        .p1 {
+            color: rgb(191, 255, 0);
+            margin-top: 200px;
+        }
+        
+        h1 {
+            color: white;
+            font-size: 50px;
+            margin-top: 50px;
+            font-weight: bolder;
+            line-height: 1.2;
+        }
+        
+        .display-2 {
+            margin-top: 40px;
+            opacity: 50%;
+            font-size: 18px;
+            color: azure;
+        }
+        
+        .team-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .column {
+            display: flex;
+            flex-direction: column;
+            margin: 0 20px;
+        }
+        
+        .column a {
+            text-decoration: none;
+            background-color: #0f0f0f;
+        }
+        
+        .profile-card {
+            width: 450px;
+            height: 605px;
+            background-color: #0f0f0f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 80px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-20px);
+        }
+        
+        .profile-card:hover img {
+            border: 2px solid rgb(191, 255, 0);
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-card img {
+            margin: 46px;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 10px;
+        }
+        
+        .profile-card h3 {
+            margin-left: 70px;
+            margin-right: 70px;
+            color: white;
+            background-color: #0f0f0f;
+            font-size: 35px;
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+        
+        .profile-card p {
+            background-color: #0f0f0f;
+            color: rgb(191, 255, 0);
+            font-size: 16px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .profile-card label {
+            background-color: #0f0f0f;
+            display: block;
+            margin-bottom: 80px;
+            color: white;
+            opacity: 20%;
+            font-size: 18px;
+        }
+        
+        .profile-card .linkedin-icon {
+            padding: 2px;
+            background-color: #0f0f0f;
+            color: black;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .profile-card .linkedin-icon:hover {
+            background-color: white;
+            background-color: #0f0f0f;
+        }
+        
+        footer {
+            padding: 130px;
+            color: rgb(95, 93, 93);
+        }
+        
+        .footer-logo {
+            display: flex;
+        }
+        
+        .footer-content {
+            display: flex;
+        }
+        
+        .footer-content-subscribe button {
+            color: black;
+            background-color: rgb(191, 255, 0);
+            height: 50px;
+            width: 170px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .hr1 {
+            width: 400px;
+            margin-left: 600px;
+            opacity: 10%;
+        }
+        
+        .hr2 {
+            opacity: 10%;
+        }
+        
+        .footer-end {
+            color: rgb(95, 93, 93);
+            margin-top: 30px;
+            opacity: 30%;
+            font-size: 14px;
+        }
+        
+        .footer-end p {
+            color: white;
+            margin-right: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="images/logo.png" alt="">MADVERSE</div>
+            <ul class="nav-links">
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="#services">PRICING</a></li>
+                <li><a href="features.html">FEATURES</a></li>
+                <li><a href="#sync">SYNC</a></li>
+            </ul>
+            <a href="index.html" class="login">LOG IN</a>
+            <a href="signup.html" class="sign-up">SIGN UP</a>
+        </nav>
+    </header>
+
+    <p class="p1" align="center">OUR MISSION</p>
+    <h1 align="center" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="display-1">Creating a global community of<br> independent artists</h1>
+    <p class="display-2" align="center">A platform to support independent artists with the best-in-class technology. We are here to be a<br> catalyst for artists to earn their true worth while empowering the community to cross-pollinate fans<br> across the globe.</p>
+
+    <p class="p1" align="center">OUR VISION</p>
+    <h1 align="center" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="display-1">Breaking barriers to <br>democratise the music industry</h1>
+    <p class="display-2" align="center">It’s time to break the boundaries by making the world of music accessible to every artist. Our goal <br>is to provide one-stop access to all major label services to make artists <b> truly independent.</b></p>
+
+    <p class="p1" align="center">OUR ROOTS</p>
+    <h1 align="center" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="display-1">Indian roots. <br><a style="color: rgb(191, 255, 0);">Global perspective.</a></h1>
+    <p class="display-2" align="center">Madverse is a homegrown label with Indian roots and a global presence. We aim at supporting <br>artists to grow their footprint across the globe by collaborating with artists from all corners of the <br>world.</b>
+    </p>
+
+    <img style="margin-left: 150px; width: 1000px; height: 340px;" src="images/image-5.png" alt="">
+
+    <p class="p1" align="center" style="margin-top: 0;">THE SQUAD</p>
+    <h1 align="center" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="display-1">Meet our <a style="color: rgb(191, 255, 0);">core</a> team</h1>
+
+    <div class="team-section">
+        <div class="column">
+            <div class="profile-card">
+                <a href="https://www.linkedin.com/in/rj07/" target="_blank">
+                    <img src="images/rohan.png" alt="Profile 1">
+                    <p>FOUNDER & CEO</p>
+                    <h3>Rohan Jain</h3>
+                    <label>Ideator and problem solver</label>
+                    <i class="fa fa-linkedin-square" style="font-size:48px;color: rgb(191, 255, 0)"></i>
+                </a>
+            </div>
+            <div class="profile-card">
+                <a href="https://www.linkedin.com/in/raksharma/" target="_blank">
+                    <img src="images/rakesh.png" alt="Profile 2">
+                    <p>TECH ADVISOR</p>
+                    <h3>Rakesh Sharma</h3>
+                    <label>Ex Accenture, IT Expert and Advisor</label>
+                    <i class="fa fa-linkedin-square" style="font-size:48px;color: rgb(191, 255, 0)"></i>
+                </a>
+            </div>
+            <div class="profile-card">
+                <a href="https://www.linkedin.com/in/sandhyasurendran/" target="_blank">
+                    <img src="images/sandhya.png" alt="Profile 3">
+                    <p>LEGAL ADVSISOR</p>
+                    <h3>Sandhaya Surendran</h3>
+                    <label>Ex Legal Counsel InMobi and Infosys</label>
+                    <i class="fa fa-linkedin-square" style="font-size:48px;color: rgb(191, 255, 0)"></i>
+                </a>
+            </div>
+        </div>
+        <div class="column" style="margin-top: 130px;margin-left: 70px">
+            <div class="profile-card" style="height: 610px;">
+                <a href="https://www.linkedin.com/in/sanjeev-srivastava-77b68662/" target="_blank">
+                    <img src="images/sanjeev.png" alt="Profile 4">
+                    <p>CO-FOUNDER & EXECUTIVE DIRECTOR</p>
+                    <h3>Sanjeev Srivastava</h3>
+                    <label>Ex Banker and Country Head Equitas/IndusInd/ING/IDBI Bank</label>
+                    <i class="fa fa-linkedin-square" style="font-size:48px;color: rgb(191, 255, 0)"></i>
+                </a>
+            </div>
+            <div class="profile-card">
+                <a href="https://www.linkedin.com/in/shatadru-sarkar/" target="_blank">
+                    <img src="images/shatadru.png" alt="Profile 5">
+                    <p>MUSIC BUSINESS ADVISOR</p>
+                    <h3>Shatadur Sarkar</h3>
+                    <label>Ex Times Music, Turnkey Publishing and WEB3 founder</label>
+                    <i class="fa fa-linkedin-square" style="font-size:48px;color: rgb(191, 255, 0)"></i>
+                </a>
+            </div>
+            <div class="profile-card">
+                <a href="https://www.linkedin.com/in/gaurav-talwar-221bb725/" target="_blank">
+                    <img src="images/gaurav.png" alt="Profile 6">
+                    <p>FINANCIAL ADVISOR</p>
+                    <h3>Gaurav Talvar</h3>
+                    <label>Ex EY, KPMG</label>
+                    <i class="fa fa-linkedin-square" style="font-size:48px;color: rgb(191, 255, 0)"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <hr class="hr2">
+
+    <footer>
+        <div class="footer-logo">
+            <img style="height:40px; width: 70px; margin-right: 5px;" src="images/logo.png" alt="">
+            <h3 style="color: white;font-size: 25px;margin-bottom: 50px;">MADVERSE</h3>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-content-adress">
+                Nesho Entertainment PVT LTD <br>Tower A, Golf View Corporate Towers, Golf Course Road,<br> Gurgaon, Haryana, India, 122002
+            </div>
+            <div class="footer-content-subscribe" style="margin-left:200px; display: flex;">
+                <label style="margin-right: 40px;"> Subscribe To News Letter </label>
+                <button>SUBSCRIBE</button>
+
+            </div>
+
+        </div>
+        <hr class="hr1">
+
+        <div class="footer-content" style="margin-top: 60px;">
+            <div class="" style="display: flex;"><i class="fa fa-phone" style="font-size:30px;margin-top: 5px;margin-right: 30px;"></i>0129-4360052</div>
+            <div class="footer-icons" style="margin-left: 500px;">
+                <i class="fa fa-instagram" style="font-size:36px;margin-right: 25px;color: white;"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class='fab fa-discord' style='font-size:36px'></i>
+                <i class="fa fa-linkedin-square" style="font-size:36px;margin-right: 30px;color: white;"></i>
+                <i class="fa fa-youtube-play" style="font-size:36px;color: white;"></i>
+            </div>
+        </div>
+        <hr class="hr2">
+        <div class="footer-end" style="display: flex;color: white;">
+            <p>©️ 2024. All rights reserved by Nesho<br> Entertainment Private<br> Limited.</p>
+            <p>Content Policy</p>
+            <p>Cookie Policy</p>
+            <p>Privacy Terms od Service</p>
+            <p> Made with 🤍 in India</p>
+        </div>
+    </footer>
+</body>
+
+</html>
